@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.berktavli.contactsapp.R
 import com.berktavli.contactsapp.databinding.FragmentPersonRegistrationBinding
 
@@ -13,16 +14,11 @@ class PersonRegistrationFragment : Fragment() {
     private lateinit var binding : FragmentPersonRegistrationBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = FragmentPersonRegistrationBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_person_registration,container ,false)
+        binding.personRegistrationFragment = this
+        binding.personRegistrationToolbarHead = "Sign Up"
 
-        binding.toolbarPersonRegistration.title = "Sign Up"
 
-        binding.buttonSave.setOnClickListener {
-            val person_name = binding.editTextPersonName.text.toString()
-            val person_phone = binding.editTextPersonPhone.text.toString()
-
-            savePerson(person_name,person_phone)
-        }
 
         return binding.root
     }

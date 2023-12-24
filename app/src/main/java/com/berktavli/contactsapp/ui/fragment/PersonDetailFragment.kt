@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
 import com.berktavli.contactsapp.R
 import com.berktavli.contactsapp.databinding.FragmentPersonDetailBinding
@@ -14,25 +15,15 @@ import com.berktavli.contactsapp.databinding.FragmentPersonDetailBinding
 class PersonDetailFragment : Fragment() {
 
     private lateinit var binding : FragmentPersonDetailBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentPersonDetailBinding.inflate(inflater,container,false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_person_detail,container,false)
 
-
-        binding.toolbarPersonDetail.title = " Person Detail"
+        binding.personDetailFragment = this
+        binding.personDetailToolbarHead = "Person Detail"
 
         val bundle: PersonDetailFragmentArgs by navArgs()
         val receivePerson = bundle.person
-
-        binding.editTextPersonName.setText(receivePerson.person_name)
-        binding.editTextPersonPhone.setText(receivePerson.person_phone)
-
-        binding.buttonUpdate.setOnClickListener {
-            val person_name = binding.editTextPersonName.text.toString()
-            val person_phone = binding.editTextPersonPhone.text.toString()
-            val person_id =
-            updatePerson(receivePerson.person_id,person_name,person_phone)
-        }
+        binding.personsObject = receivePerson
 
         return binding.root
     }
@@ -41,4 +32,6 @@ class PersonDetailFragment : Fragment() {
         Log.e("Person","Güncellendi")
         Log.e("Person","$person_id-$person_name-$person_phone")
     }
+
+
 }
