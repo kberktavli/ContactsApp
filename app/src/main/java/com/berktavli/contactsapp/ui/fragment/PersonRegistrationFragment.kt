@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.berktavli.contactsapp.R
 import com.berktavli.contactsapp.databinding.FragmentPersonRegistrationBinding
+import com.berktavli.contactsapp.ui.viewmodel.PersonRegistrationViewModel
 
-class PersonRegistrationFragment : Fragment() {
-    private lateinit var binding : FragmentPersonRegistrationBinding
+class PersonRegistrationFragment: Fragment() {
+    private lateinit var binding: FragmentPersonRegistrationBinding
+    private lateinit var viewModel: PersonRegistrationViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_person_registration,container ,false)
@@ -23,9 +26,14 @@ class PersonRegistrationFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: PersonRegistrationViewModel by viewModels()
+        viewModel = tempViewModel
+    }
+
     fun savePerson(person_name : String, person_phone : String ){
-        Log.e("Person","Tuşa basıldı")
-        Log.e("Person","$person_name-$person_phone")
+        viewModel.save(person_name,person_phone)
     }
 
 }

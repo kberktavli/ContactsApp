@@ -12,9 +12,10 @@ import com.berktavli.contactsapp.data.entity.Persons
 import com.berktavli.contactsapp.databinding.CardViewBinding
 import com.berktavli.contactsapp.databinding.FragmentMainpageBinding
 import com.berktavli.contactsapp.ui.fragment.MainpageFragmentDirections
+import com.berktavli.contactsapp.ui.viewmodel.MainpageViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class PersonsAdapter(var mContext : Context, var personsList:List<Persons>) : RecyclerView.Adapter<PersonsAdapter.CardViewHolder>(){
+class PersonsAdapter(var mContext : Context, var personsList:List<Persons>, var viewModel : MainpageViewModel) : RecyclerView.Adapter<PersonsAdapter.CardViewHolder>(){
     inner class CardViewHolder( val design : CardViewBinding) : RecyclerView.ViewHolder(design.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val binding : CardViewBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.card_view,parent,false)
@@ -33,7 +34,7 @@ class PersonsAdapter(var mContext : Context, var personsList:List<Persons>) : Re
         d.imageViewDelete.setOnClickListener {
             Snackbar.make(it,"Silinsin mi ? ${person.person_id}",Snackbar.LENGTH_LONG)
                 .setAction("Evet"){
-                    deletePerson(person.person_id)
+                    viewModel.delete(person.person_id)
                 }
                 .show()
         }
@@ -41,8 +42,5 @@ class PersonsAdapter(var mContext : Context, var personsList:List<Persons>) : Re
 
     override fun getItemCount(): Int {
         return personsList.size
-    }
-    fun deletePerson(person_id : Int){
-        Log.e("Kişi Sil", person_id.toString())
     }
 }
