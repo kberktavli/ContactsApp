@@ -5,13 +5,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.berktavli.contactsapp.data.entity.Persons
 import com.berktavli.contactsapp.data.repo.PersonsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainpageViewModel : ViewModel() {
-    var prepo = PersonsRepository()
+@HiltViewModel
+class MainpageViewModel @Inject constructor(var prepo : PersonsRepository) : ViewModel() {
     var personList = MutableLiveData<List<Persons>>()
 
     init {

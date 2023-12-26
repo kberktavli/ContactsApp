@@ -13,8 +13,9 @@ import com.berktavli.contactsapp.R
 import com.berktavli.contactsapp.databinding.FragmentPersonDetailBinding
 import com.berktavli.contactsapp.ui.viewmodel.PersonDetailViewModel
 import com.berktavli.contactsapp.ui.viewmodel.PersonRegistrationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PersonDetailFragment : Fragment() {
 
     private lateinit var binding : FragmentPersonDetailBinding

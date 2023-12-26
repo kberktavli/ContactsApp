@@ -18,8 +18,10 @@ import com.berktavli.contactsapp.databinding.FragmentMainpageBinding
 import com.berktavli.contactsapp.ui.adapter.PersonsAdapter
 import com.berktavli.contactsapp.ui.viewmodel.MainpageViewModel
 import com.berktavli.contactsapp.ui.viewmodel.PersonRegistrationViewModel
+import com.berktavli.contactsapp.util.switch
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainpageFragment : Fragment() {
     private lateinit var binding : FragmentMainpageBinding
     private lateinit var viewModel : MainpageViewModel
@@ -57,7 +59,7 @@ class MainpageFragment : Fragment() {
     }
 
     fun clickFab(it : View){
-        Navigation.findNavController(it).navigate(R.id.personRegistrationAction)
+        Navigation.switch(it,R.id.personRegistrationAction)
     }
 
     override fun onResume() {

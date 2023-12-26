@@ -13,6 +13,7 @@ import com.berktavli.contactsapp.databinding.CardViewBinding
 import com.berktavli.contactsapp.databinding.FragmentMainpageBinding
 import com.berktavli.contactsapp.ui.fragment.MainpageFragmentDirections
 import com.berktavli.contactsapp.ui.viewmodel.MainpageViewModel
+import com.berktavli.contactsapp.util.switch
 import com.google.android.material.snackbar.Snackbar
 
 class PersonsAdapter(var mContext : Context, var personsList:List<Persons>, var viewModel : MainpageViewModel) : RecyclerView.Adapter<PersonsAdapter.CardViewHolder>(){
@@ -28,7 +29,8 @@ class PersonsAdapter(var mContext : Context, var personsList:List<Persons>, var 
         d.personObject = person
         d.cardViewRow.setOnClickListener {
             val pass = MainpageFragmentDirections.personDetailAction(person = person)
-            Navigation.findNavController(it).navigate(pass)
+            //Navigation.findNavController(it).navigate(pass)
+            Navigation.switch(it,pass)
         }
 
         d.imageViewDelete.setOnClickListener {

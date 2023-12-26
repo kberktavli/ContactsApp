@@ -11,7 +11,9 @@ import androidx.fragment.app.viewModels
 import com.berktavli.contactsapp.R
 import com.berktavli.contactsapp.databinding.FragmentPersonRegistrationBinding
 import com.berktavli.contactsapp.ui.viewmodel.PersonRegistrationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PersonRegistrationFragment: Fragment() {
     private lateinit var binding: FragmentPersonRegistrationBinding
     private lateinit var viewModel: PersonRegistrationViewModel

@@ -5,7 +5,7 @@ import com.berktavli.contactsapp.data.entity.Persons
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class PersonDataSource {
+class PersonsDataSource {
 
     suspend fun personsLoad() : List<Persons> =
         withContext(Dispatchers.IO){
