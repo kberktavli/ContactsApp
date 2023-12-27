@@ -34,7 +34,7 @@ class PersonsAdapter(var mContext : Context, var personsList:List<Persons>, var 
         }
 
         d.imageViewDelete.setOnClickListener {
-            Snackbar.make(it,"Silinsin mi ? ${person.person_id}",Snackbar.LENGTH_LONG)
+            Snackbar.make(it,"${person.person_name} Silinsin mi ? ",Snackbar.LENGTH_LONG)
                 .setAction("Evet"){
                     viewModel.delete(person.person_id)
                 }

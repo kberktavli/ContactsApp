@@ -66,6 +66,21 @@ dependencies {
     kapt ("com.google.dagger:hilt-compiler:2.50")
 
 
+    // For instrumentation tests
+    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.50")
+    androidTestAnnotationProcessor ("com.google.dagger:hilt-compiler:2.50")
+
+    // For local unit tests
+    testImplementation  ("com.google.dagger:hilt-android-testing:2.50")
+    testAnnotationProcessor  ("com.google.dagger:hilt-compiler:2.50")
+
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.room:room-ktx:2.6.1")
+
+
 
 
 }
